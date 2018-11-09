@@ -13,48 +13,43 @@
 
 2. Write in `render.py` :
 		
-		def  render_select():
-		#Display static example of a html select tag
-			s = '<select name="couleurs\">\n\
-					\t<option value="#ff9900" />orange</option>\n
-					\t<option value="#00ff00" />vert</option>\n\
-					\t<option value="#ff0000" selected />rouge</option> \n\
-					\t<option value="#ff00ff" />violet</option>\n\
-					\t<option value="#0000ff" />bleu</option>\n\
-					\t<option value="#000000" />noir</option>\n\
-					\t<option value="#ffffff" />blanc</option>\n\
-					\t<option value="#ffff00" />jaune</option>\n\
-				</select>\n\t'
-			return s
+		def render_select():
+		# Display static example of a html select tag 
+		couleurs = {
+			'#ff9900': 'orange',
+			'#00ff00': 'vert',
+			'#ff0000': 'rouge',
+			'#ff00ff': 'violet',
+			'#0000ff': 'bleu',
+			'#000000': 'noir',
+			'#ffffff': 'blanc',
+			'#ffff00': 'jaune'
+		}
+		s=''
+		first = '\t<select name="couleurs">\n'
+		for cnt in couleurs:
+			s += ('\t\t<option value="{}" {} />{}</option>\n'.
+					format(cnt, 
+						"selected" if couleurs[cnt] == 'rouge' else "", 
+						couleurs[cnt]))
+		second = '\t</select>\n'
 
-		def  render_button():
-			# Display static example of a html input used as button
-			s =  '<input type="submit" value="Envoyer">\n'
-			return s
+		return first + s + second
 
-		def  render_form(code):
-			# code : str :
-			# Display static example of a html form tag
-			first_part =  '<form>\n\t  '
-			second_part =  '</form>'
-			s = first_part +  str(code)  + second_part
-			return  str(s)
 
-3. Import `render.py` in `__init__.py` :
+	def render_button():
+		# Display static example of a html input used as button   
+		s = '\t<input type="submit" value="Envoyer">\n'
+		return s
 
-		from . import  render
 
-4. Import package `form` in `app.py` :
-
-		import form.render as f
-		
-		if __name__ ==  "__main__":
-
-			select = f.render_select()
-			button = f.render_button()
-			s = f.render_form(select+button)
-			
-			print(s)
+	def render_form(code):
+		# code : str : 
+		# Display static example of a html form tag   
+		first_part = '<form>\n'
+		second_part = '</form>'
+		s = first_part + str(code) + second_part
+		return str(s)
 			
 5. Run `app.py` :
 		

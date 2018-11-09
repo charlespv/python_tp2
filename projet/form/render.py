@@ -27,6 +27,7 @@ def render_button():
     s = '\t<input type="submit" value="Envoyer">\n'
     return s
 
+
 def render_form(code):
     # code : str : 
     # Display static example of a html form tag   

@@ -37,19 +37,19 @@
 		return first + s + second
 
 
-	def render_button():
-		# Display static example of a html input used as button   
-		s = '\t<input type="submit" value="Envoyer">\n'
-		return s
+		def render_button():
+			# Display static example of a html input used as button   
+			s = '\t<input type="submit" value="Envoyer">\n'
+			return s
 
 
-	def render_form(code):
-		# code : str : 
-		# Display static example of a html form tag   
-		first_part = '<form>\n'
-		second_part = '</form>'
-		s = first_part + str(code) + second_part
-		return str(s)
+		def render_form(code):
+			# code : str : 
+			# Display static example of a html form tag   
+			first_part = '<form>\n'
+			second_part = '</form>'
+			s = first_part + str(code) + second_part
+			return str(s)
 			
 5. Run `app.py` :
 		
